@@ -16,6 +16,11 @@
     <input id="photo_image_url" class="form-control" type="text" name="the_source" value="<%= @photo.source %>">
   </div>
   <div class="form-group">
+    <label for="photo_user_id">Photo User Id:</label>
+    <input id="user_id" class="form-control" type="text" name="user_id" value="<%= @photo.user_id %>">
+  </div>
+
+  <div class="form-group">
     <input class="btn btn-default" type="submit" value="Create photo">
   </div>
 <% end %>

@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   def show
-    @photo = Photo.find(params['id'])
+    @photo = Photo.find(params[:id])
   end
 
   def new
@@ -9,8 +9,9 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new
-    @photo.caption = params['the_caption']
-    @photo.source = params['the_source']
+    @photo.caption = params[:the_caption]
+    @photo.source = params[:the_source]
+    @photo.user_id = params[:user_id]
 
     if @photo.save
       redirect_to photo_url(@photo.id)
@@ -20,21 +21,24 @@ class PhotosController < ApplicationController
 
   end
 
+  def edit
+    @photo = Photo.find(params[:id])
+  end
+
   def destroy
-    @photo = Photo.find(params['id'])
+    @photo = Photo.find(params[:id])
     @photo.destroy
 
     redirect_to photos_url
   end
 
-  def edit
-    @photo = Photo.find(params['id'])
-  end
+
 
   def update
-    @photo = Photo.find(params['id'])
-    @photo.caption = params['the_caption']
-    @photo.source = params['the_source']
+    @photo = Photo.find(params[:id])
+    @photo.caption = params[:the_caption]
+    @photo.source = params[:the_source]
+    @photo.user_id = params[:user_id]
 
     if @photo.save
       redirect_to photo_url(@photo.id)
@@ -47,6 +51,7 @@ class PhotosController < ApplicationController
   def index
     @photos = Photo.all
   end
+
 end
 
 

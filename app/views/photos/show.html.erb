@@ -3,6 +3,8 @@
     <img alt="<%= @photo.caption %>" class="img-responsive" src="<%= @photo.source %>">
     <div class="caption">
       <p class="lead"><%= @photo.caption %></p>
+
+      <p class="lead">by <%= link_to @photo.user.name, user_path(@photo.user.id) %></p>
       <p>
         <%= link_to photo_path(@photo.id), :class => "btn btn-primary" do %>
             <i class="fa fa-search-plus"></i>
